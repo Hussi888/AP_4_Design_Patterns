@@ -1,5 +1,5 @@
 package Abstract_Factory;
 
 public abstract class AbstractFactory {
-    abstract Shape getShape(String shapeType) ;
+    public abstract Shape getShape(String shapeType) ;
 }

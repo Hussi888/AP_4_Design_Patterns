@@ -1,29 +1,40 @@
-package
+
 
 import Abstract_Factory.AbstractFactory;
 import Abstract_Factory.FactoryProducer;
+import Abstract_Factory.Shape;
+import Builder.HouseBuilder;
+import Builder.House;
+import Builder.IglooHouseBuilder;
+import Builder.CivilEngineer;
+import Singleton.Game;
 
 public class Main {
     public static void main(String args[]) {
-        //get shape factory
+        //Abstract Factory Method
         AbstractFactory shapeFactory = FactoryProducer.getFactory(false);
-        //get an object of Shape Rectangle
         Shape shape1 = shapeFactory.getShape("RECTANGLE");
-        //call draw method of Shape Rectangle
         shape1.draw();
-        //get an object of Shape Square
         Shape shape2 = shapeFactory.getShape("SQUARE");
-        //call draw method of Shape Square
         shape2.draw();
-        //get shape factory
         AbstractFactory shapeFactory1 = FactoryProducer.getFactory(true);
-        //get an object of Shape Rectangle
         Shape shape3 = shapeFactory1.getShape("RECTANGLE");
-        //call draw method of Shape Rectangle
         shape3.draw();
-        //get an object of Shape Square
         Shape shape4 = shapeFactory1.getShape("SQUARE");
-        //call draw method of Shape Square
         shape4.draw();
+
+        //Builder Pattern
+        HouseBuilder iglooBuilder = new IglooHouseBuilder();
+        CivilEngineer engineer = new CivilEngineer(iglooBuilder);
+
+        engineer.constructHouse();
+
+        House house = engineer.getHouse();
+
+        System.out.println("\nBuilder constructed: "+ house);
+
+        Game a = Game.getInstance();
+        System.out.println("\nSinglton Object:\n"+ a.s);
+
     }
 }
